@@ -1,0 +1,75 @@
+*,
+::after,
+::before {
+    box-sizing: inherit;
+}
+
+:root {
+    --b: #000000;
+    --w: #ffffff;
+    --c1: #d9edbf;
+    --c2: #ffb996;
+    --c3: #EEF0E5;
+    --c4: #fdffab;
+    --c5: #163020;
+    --c6: #304D30;
+    --hero: "Paytone One", sans-serif;
+    --handwriting:'Salsa', cursive;
+    --dashfont : 'Ubuntu', sans-serif;
+}
+
+html {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 60px 0 0 0;
+    padding: 0;
+    width: 100%;
+    min-height:100vh;
+    /* font-family: var(--hero); */
+    /* overflow: hidden; */
+    /* Hide scrollbars */
+    /* overflow-x: hidden; */
+    background-color: var(--c1);
+    -webkit-tap-highlight-color: transparent;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    padding-inline: 1rem;
+    padding-block: 1rem;
+    /* FIXME: REMOVE THE BELOW*/
+    padding-bottom: 5rem; 
+}
+
+p {
+    margin: 0;
+}
+
+h1,
+h2,
+h3 {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+button{
+    cursor: pointer;
+
+}
+.navbar{
+    background-color: var(--c3);
+}
+
+.page-not-found{
+    display: flex;
+    justify-content: center;
+    align-self: center;
+}

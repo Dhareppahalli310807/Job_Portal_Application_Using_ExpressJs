@@ -1,0 +1,59 @@
+<section>
+    <div class="container">
+        <div class="sign-up_container">
+            <form action="/signin" method="post">
+                <div class="form-container">
+                   
+                            <div class="sign-up_title">
+                                <h3>Sign In here</h3>
+                                <p>Easily : Grow your career!</p>
+                            </div>
+                            <% if(errors) { %>
+                                <div class="notification is-warning">
+        
+                                    <ul>
+                                        <li>
+                                            <h4>Warning!</h4>
+                                        </li>
+                                        <% errors.forEach(err=> { %>
+                                            <li>⚠️ <%= err.msg %>
+                                            </li>
+                                            <% }) %>
+                                    </ul>
+                                </div>
+                            <% } %>
+                            <% if(accountError) { %>
+                                <div class="notification is-warning">
+                                    <p>⚠️ <%= accountError %> </p>
+                                </div>
+                            <% } %>
+                            <div class="form-full">
+                                <div>
+                                    <label class="label" for="email">Email : </label>
+                                    <input class="input is-medium" type="email" placeholder="ex: dharepps@gmail.com"
+                                        id="email" name="email" />
+                                </div>
+                            </div>
+                            <div class="form-full">
+                                <div>
+                                    <label class="label" for="password">Password : </label>
+                                    <input class="input is-medium" type="password" id="password"
+                                        name="password" />
+                                </div>
+                            </div>
+                            <div class="form-full">
+                                <p class="redirect_signin">Don't have an account? Sign Up <a
+                                        href="/signup"><u>here</u></a></p>
+                            </div>
+                            <div class="form-full">
+                                <button class="btn waves-effect waves-light" type="submit">
+                                    Submit&nbsp;
+                                    <i class="fa-solid fa-paper-plane fa-bounce"></i>
+                                </button>
+                            </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

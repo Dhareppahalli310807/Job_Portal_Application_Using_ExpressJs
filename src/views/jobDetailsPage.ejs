@@ -1,0 +1,154 @@
+<div class="container">
+    <div class="job-container">
+        <div class="job-title">
+            <h2>
+                <%= jobById.companyname%>
+            </h2>
+            <h4>
+                <%= jobById.jobdesignation %> job in <%= jobById.joblocation %>
+            </h4>
+        </div>
+        <div class="job-details">
+            <div class="job-desc">
+                <div>
+                    <strong><em>Posted By : </em></strong>&nbsp;
+                    <strong><%= jobById.recruiter %></strong>
+                </div>
+                <div>
+                    <strong><em>Responsibilities : </em></strong>&nbsp;<br>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates dolores eius est minus
+                        soluta. Unde natus explicabo ducimus porro ipsum tempora ullam dolorum eveniet animi. Lorem
+                        ipsum dolor sit, amet consectetur adipisicing elit. Accusantium, veniam.
+                    </p>
+                </div>
+                <div>
+                    <strong><em>skillsrequired : </em></strong>&nbsp;
+                    <% if (Array.isArray(jobById.skillsrequired)) { %>
+                        <% jobById.skillsrequired.forEach(skillsrequired => { %>
+                            <span class="tag is-success is-medium">
+                                <%= skillsrequired %>
+                            </span>
+                        <% }); %>
+                    <% } else { %>
+                        <span class="tag is-success is-medium">
+                            <%= jobById.skillsrequired %>
+                        </span>
+                    <% } %>
+                </div>
+                <div>
+                    <strong><em>About the company : </em></strong>&nbsp;
+                    <div class="col s12 m7">
+                        <div class="card horizontal card-horizontal">
+                            <div class="card-image">
+                                <img src="/images/<%= jobById.companyImage %>">
+                            </div>
+                            <div class="card-stacked">
+                                <div class="card-content">
+                                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto ratione dolor
+                                        eveniet.
+                                    </p>
+                                </div>
+                                <div class="card-action">
+                                    <a href="#">
+                                        <%= jobById.companyname %> website
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="job-apply">
+
+                <p>
+                    <strong><em>Company</em></strong> : <%= jobById.companyname %>
+                </p>
+                <p>
+                    <strong><em>Location</em></strong> : <%= jobById.joblocation %>
+                </p>
+                <p>
+                    <strong><em>Salary</em></strong> : Upto ₹ <%= jobById.salary %>
+                </p>
+                <p>
+                    <strong><em>skillsrequired</em></strong> : Upto ₹ <%= jobById.skillsrequired %>
+                </p>
+                <p>
+                    <strong><em>Apply By</em></strong> : <%= jobById.applyby %>
+                </p>
+                <p>
+                    <strong><em>No. of Openings</em></strong> : <%= jobById.numberofopenings %>
+                </p>
+                <p>
+                    <strong><em>No. of Applicants</em></strong> : <%= jobById.applicants.length %>
+                </p>
+
+                <div>
+                    <a class="waves-effect waves-light btn modal-trigger" href="#modal1">
+                        Apply
+                        <i class="material-icons right">send</i>
+                    </a>
+
+                    <!-- Modal Structure -->
+                    <div id="modal1" class="modal">
+                        <div class="modal-content">
+                            <form action="/jobs/<%= jobById.id %>/applicants" method="post" enctype="multipart/form-data">
+                                <h4>Apply with one click!</h4>
+                                <label for="name">Full Name : </label>
+                                <input class="input is-medium" type="text" placeholder="Dhareppa Halli" name="name"
+                                    id="name" required>
+                                <label for="email">Email : </label>
+                                <input class="input is-medium" type="email" placeholder="dharepps@gmail.com"
+                                    name="email" id="email" required>
+                                <label for="contact">Phone Number : </label>
+                                <input class="input is-medium" type="tel" placeholder="9161111165" pattern="\+91 \d{10}" name="contact"
+                                    id="contact" value="+91 " title="Please enter a valid 10-digit phone number" required>
+                                <label for="resumePath"> Upload Resume : </label>
+                                <input type="file" name="resumePath" id="resumePath" required>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn waves-effect waves-light">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!--^ This can only be seen if You have posted this Job only -->
+                <% if(jobById.recruiterEmail === user?.email){ %>
+                <div class="upd-del-btn">
+                    <strong><em>Recruiter Options :&nbsp;</em></strong>
+                    <div>
+                        <a class="btn waves-effect waves-light recruiter_btn" href="/jobs/<%= jobById.id %>/applicants">
+                            View Applicants
+                        </a>
+                    </div>
+                    <div>
+                        <a class="waves-effect waves-light btn-small lime lighten-6 recruiter_btn" href="/update/<%= jobById.id %>">Update
+                            <i class="material-icons">
+                                mode_edit
+                            </i>
+                        </a>
+                    </div>
+                    <div>
+                        <button class="waves-effect waves-light btn-small deep-orange darken-2 recruiter_btn"
+                            onclick="deleteProduct('<%= jobById.id %>')">Delete
+                            <i class="material-icons">
+                                delete_forever
+                            </i>
+                        </button>
+                    </div>
+
+                </div>
+                <% } else {  %>
+                    <div class="upd-del-btn">
+                        <em><strong> *Update, Delete and View applicants buttons only visible if you posted this job</em></strong>
+                    </div>
+                <% } %>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>

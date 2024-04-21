@@ -1,0 +1,56 @@
+.form-container{
+    padding:1rem 0.5rem;
+    background-color:var(--w);
+    border: 2px solid var(--c2);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+
+  h3{
+    margin: 1rem 0;
+    color: var(--b);
+    letter-spacing: -1.5px;
+  }
+
+  .post-title{
+    text-align: center;
+    background-color: var(--c3);
+    border-radius: 10px;
+  }
+
+  @media (max-width: 767px){
+    padding-inline: 0.1rem;
+  }
+}
+
+.form-container div{
+  width: 90%;
+  margin: 0.3rem auto;
+  color: var(--c2);
+}
+
+.form-full{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+
+    @media (max-width: 767px){
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+}
+
+.form-full div{
+  width: 100%;
+}
+
+.select select{
+  background-color: var(--c3);
+
+}

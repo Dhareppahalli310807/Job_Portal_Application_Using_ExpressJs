@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="jobs-flex-container">
+    <% if(jobs) { %>
+      <% jobs.forEach(job=>{%>
+        <div class="card medium sticky-action">
+          <div class="card-image waves-effect waves-block waves-light">
+            <% if(job.companyImage){  %>
+              <img class="activator" src="/images/<%= job.companyImage %>">
+          <% } else { %>
+            <img class="activator" src="/images/logo_nil.svg">
+          <% } %>
+          </div>
+          <div class="card-content">
+            <span class="card-title activator grey-text text-darken-4">
+
+              <i class="material-icons right">info</i>
+              <strong>
+                <%= job.companyname %>
+              </strong>
+
+            </span>
+            <p>
+            <div class="card-title-center">
+              <div class="title-details">
+                <i class="material-icons">location_on</i>
+                <em>
+                  <%= job.joblocation %>
+                </em> &nbsp;&nbsp;
+                <span class="">
+                  <%= job.jobdesignation %>
+                </span>
+              </div>
+            </div>
+            </p>
+
+          </div>
+          <div class="card-action">
+          <a href="/jobs/<%=job.id%>"><button type="submit">More details</button></a>
+          </div>
+          <div class="card-reveal">
+            <span class="card-title grey-text text-darken-4">
+              <%= job.companyname %><i class="material-icons right">close</i>
+            </span>
+            <p> <strong>Type :&nbsp;</strong>
+              <%= job.jobcategory %>
+            </p>
+            <p><strong>Job :&nbsp;</strong>
+              <%= job.jobdesignation %>
+            </p>
+            <p><strong>Salary :&nbsp;</strong>upto ₹<%= job.salary %>
+            </p>
+            <p><strong>skillsrequired :&nbsp;</strong>
+              <% if (Array.isArray(job.skillsrequired)) { %>
+                <% job.skillsrequired.forEach(skillsrequired => { %>
+                  <span class="tag is-success">
+                    <%= skillsrequired %>
+                  </span>
+                <% }); %>
+              <% } else { %>
+                <span class="tag is-success">
+                  <%= job.skillsrequired %>
+                </span>
+              <% } %>
+            </p>
+          </div>
+        </div>
+
+        <% }) %>
+          <% } %>
+  </div>
+</div>

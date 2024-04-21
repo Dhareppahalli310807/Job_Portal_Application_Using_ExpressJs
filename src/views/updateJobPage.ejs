@@ -1,0 +1,128 @@
+<section>
+    <div class="container">
+      
+      <form action="/update/<%= job.id %>" method="post">
+        <div class="form-container">
+          <div class="post-title">
+            <h3>Edit Job</h3>
+          </div>
+          <% if(errors) {  %>
+            <div class="notification is-warning">
+  
+              <ul >
+                <li ><h4>Warning!</h4></li>
+                <% errors.forEach(err => { %>
+                  <li >⚠️ <%= err.msg %></li>
+                <% }) %>
+              </ul>
+            </div>
+          <% } %>
+          <div class="form-full">
+            <div>
+              <label class="label" for="companyname">Company Name</label>
+              <input
+                class="input is-medium"
+                type="text"
+                placeholder="ex: Microsoft"
+                id="companyname"
+                name="companyname"
+                value="<%= job.companyname %>"
+              />
+            </div>
+            <div>
+              <label class="label" for="joblocation">Job location</label>
+              <input
+                class="input is-medium"
+                type="text"
+                placeholder="ex: Bengaluru"
+                id="joblocation"
+                name="joblocation"
+                value="<%= job.joblocation %>"
+              />
+            </div>
+          </div>
+          <div class="select is-success">
+            <select name="jobcategory">
+              <option value="<%= job.jobcategory%>"><%= job.jobcategory %></option>
+              <option value="Tech">Tech job</option>
+              <option value="Non-Tech">Non-Tech job</option>
+            </select>
+          </div>
+          <div class="select is-success">
+            <select name="jobdesignation" id="jobdesignation" >
+              <option value="<%= job.jobdesignation %>"><%= job.jobdesignation %></option>
+              <option value="HR">HR</option>
+              <option value="Data entry">DATA ENTRY</option>
+              <option value="SDE-1">SDE-1</option>
+              <option value="SDE-2">SDE-2</option>
+              <option value="Devops">DEVOPS</option>
+              <option value="MERN Stack developer">MERN STACK DEVELOPER</option>
+              <option value="React developer">REACT DEVELOPER</option>
+              <option value="Frontend Developer">FRONTEND DEVELOPER</option>
+              <option value="Backend Developer">BACKEND DEVELOPER</option>
+              <option value="Java Developer">JAVA DEVELOPER</option>
+              <option value="Blockchain developer">BLOCKCHAIN DEVELOPER</option>
+              <option value="AI/ML">AI/ML ENGINEER</option>
+              <option value="Data Analysis">DATA ANALYSTS</option>
+            </select>
+          </div>
+          <div class="form-full">
+            <div>
+              <label class="label" for="salary">Expected Salary</label>
+              <input
+                class="input is-normal"
+                type="number"
+                placeholder="ex: 500000"
+                id="salary"
+                name="salary"
+                min="100"
+                value="<%= job.salary %>"
+              />
+            </div>
+            <div>
+              <label class="label" for="openings">Num of Openings</label>
+              <input
+                class="input is-normal"
+                type="number"
+                placeholder="ex: 5"
+                id="openings"
+                name="openings"
+                min="1"
+                value="<%= job.openings %>"
+              />
+            </div>
+          </div>
+          <div class="form-full">
+            <div>
+              <label class="label" for="lastDate">Apply by :</label>
+              <input
+                class="input is-normal"
+                type="date"
+                name="lastDate"
+                id="lastDate"
+                value="<%= job.lastDate %>"
+              />
+            </div>
+            <div>
+              <label class="label" for="skillsrequired">Skills required :</label>
+              <input
+                class="input is-normal"
+                type="text"
+                name="skillsrequired"
+                id="skillsrequired"
+                placeholder="ex: React,Nodejs,SQL,Docker..."
+                value="<%= job.skillsrequired %>"
+              />
+            </div>
+          </div>
+          <div class="form-full">
+            <button class="btn waves-effect waves-light" type="submit" onclick="M.toast({html: 'Success! Updated'})">
+              Submit&nbsp;
+              <i class="fa-solid fa-paper-plane fa-bounce"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+  

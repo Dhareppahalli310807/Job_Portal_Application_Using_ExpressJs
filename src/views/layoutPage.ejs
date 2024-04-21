@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easily</title>
+
+
+    <!--^ ---------------- Google Fonts ---------------------->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Paytone+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Salsa&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!--^ ---------------- Google Icons ---------------------->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!--^ ---------- Bulma and Materialize CSS --------------->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!--^ ---------------- CSS ---------------------->
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/sign_up.css">
+    <link rel="stylesheet" href="/styles/landingPage.css">
+    <link rel="stylesheet" href="/styles/post-newjob.css">
+    <link rel="stylesheet" href="/styles/jobs.css">
+    <link rel="stylesheet" href="/styles/job-details.css">
+    <link rel="stylesheet" href="/styles/recruiter_dashboard.css">
+</head>
+
+<body>
+    <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+                <p style="font-size: 2rem;font-family:Arial, Helvetica, sans-serif;">Easify</p>
+            </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+                data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="/">
+                    Home
+                </a>
+
+                <a class="navbar-item" href="/jobs">
+                    Jobs
+                </a>
+
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        <% if(user){ %>
+                            <%= user?.name %>
+                                <% } else { %>
+                                    Recruiter
+                                    <% } %>
+                    </a>
+
+                    <div class="navbar-dropdown">
+                        <% if(user){ %>
+                            <a class="navbar-item" href="/dashboard">
+                                Dashboard
+                            </a>
+                            <a class="navbar-item" href="/logout"
+                                onclick="M.toast({ html: 'Succesfully Logged out!' })">
+                                Logout
+                            </a>
+                            <% } else { %>
+                                <a class="navbar-item" href="/signin">
+                                    Log in
+                                </a>
+                                <% } %>
+
+                                    <a class="navbar-item" href="/postjob">
+                                        Post New Job
+                                    </a>
+                                    <hr class="navbar-divider">
+                                    <a class="navbar-item" href="https://github.com/DhareppaHalli310807" target="_blank">
+                                        About
+                                    </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <% if(!user){ %>
+                        <div class="buttons">
+                            <a class="button is-black" href="/signup">
+                                <strong>Sign up</strong>
+                            </a>
+                            <a class="button is-light" href="/signin">
+                                Log in
+                            </a>
+                        </div>
+                        <% } else { %>
+                            <div class="buttons">
+                                <a class="button is-rounded" href="/dashboard" style="border: 1.5px solid black;">
+                                    <span class="material-symbols-outlined">
+                                        person
+                                    </span>
+                                </a>
+                                <a class="button is-black" href="/logout"
+                                    onclick="M.toast({ html: 'Succesfully Logged out!' })">
+                                    <strong>Logout</strong>
+                                </a>
+                            </div>
+                            <% } %>
+
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div><%-body %></div>
+
+    <script src="/scripts/dynamic.js"></script>
+    <script src="https://kit.fontawesome.com/c346eaf8db.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+
+</html>
